@@ -2,6 +2,10 @@ package com.gestaotreinamento.gestaotreinamento.model;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 @Service
 public class PersonService {
 
@@ -21,4 +25,14 @@ public class PersonService {
 
         return PersonDTO.of(iPersonRepository.save(person));
     }
+
+    public List<PersonDTO> findAll(){
+
+        List<PersonDTO> persons = new ArrayList<>();
+
+        iPersonRepository.findAll().forEach(person -> persons.add(PersonDTO.of(person)));
+
+        return persons;
+    }
+
 }
